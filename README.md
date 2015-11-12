@@ -20,7 +20,7 @@ curl -sS https://getcomposer.org/installer | php
 
 # Add B2BackblazeBundle as a dependency
 
-    php composer.phar require "kamilZ/b2blackblaze":"dev-master"
+    php composer.phar require "kamilz/b2backblaze-bundle":"dev-master"
 
 # Enable the bundle in the kernel
 
