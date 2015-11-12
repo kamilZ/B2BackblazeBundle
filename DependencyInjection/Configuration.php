@@ -22,11 +22,11 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->scalarNode('account_id')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('account_key')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('bucket_id')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('bucket_region')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('timeout')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('account_id')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('account_key')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('bucket_id')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('bucket_region')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('timeout')->isRequired()->cannotBeEmpty()->end()
             ->end();
 
         return $treeBuilder;
