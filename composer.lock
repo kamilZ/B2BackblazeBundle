@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0b98d47f3b6c70e6b32c7f6b13045d5c",
-    "content-hash": "c4bd89abb39823c09d0fe3da49506a40",
+    "hash": "1717f257f2a4cc8d4ff5bed62ea7b279",
+    "content-hash": "bdb2c535093fef7390ce844ea37f3c7b",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -205,12 +205,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kamilZ/B2Backblaze.git",
-                "reference": "022622f9e8cdf1c73b4cc7b9d5938fdd68a10706"
+                "reference": "b3962ddb156080712a99c8a4dc62420f77a4a76f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kamilZ/B2Backblaze/zipball/022622f9e8cdf1c73b4cc7b9d5938fdd68a10706",
-                "reference": "022622f9e8cdf1c73b4cc7b9d5938fdd68a10706",
+                "url": "https://api.github.com/repos/kamilZ/B2Backblaze/zipball/b3962ddb156080712a99c8a4dc62420f77a4a76f",
+                "reference": "b3962ddb156080712a99c8a4dc62420f77a4a76f",
                 "shasum": ""
             },
             "require": {
@@ -250,7 +250,7 @@
                     "homepage": "http://github.com/kamilZ/B2Backblaze/contributors"
                 }
             ],
-            "description": "PHP5 libreary that provides an API for B2 Cloud Storage",
+            "description": "PHP5 library that provides an API for B2 Cloud Storage",
             "homepage": "https://github.com/kamilZ",
             "keywords": [
                 "api",
@@ -259,7 +259,7 @@
                 "php",
                 "storage"
             ],
-            "time": "2015-11-12 20:27:42"
+            "time": "2015-11-13 01:55:28"
         },
         {
             "name": "kriswallsmith/buzz",
