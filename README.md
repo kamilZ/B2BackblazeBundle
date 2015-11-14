@@ -54,6 +54,8 @@ Upload File:
         $b2 = $this->get("backblaze.b2");
 
         $b2->uploadFile("...test.png","test.png");
+        or
+        $b2->uploadFile($file,"test.png");
         (...)
 
 

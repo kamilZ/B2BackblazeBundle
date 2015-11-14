@@ -2,7 +2,8 @@
 
 namespace KamilZ\B2BackblazeBundle\Tests;
 
-use B2Backblaze\B2Client;
+use B2Backblaze\B2API;
+use KamilZ\B2BackblazeBundle\Services\B2Service;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class B2ClientTest extends WebTestCase
@@ -12,6 +13,7 @@ class B2ClientTest extends WebTestCase
         $client = static::createClient();
         $service = $client->getContainer()->get('backblaze.b2');
         $this->assertFalse(is_null($service));
+        $this->assertTrue($service instanceof B2Service);
     }
 
     public function testAPIIndex()
@@ -23,39 +25,41 @@ class B2ClientTest extends WebTestCase
         $accountKey = $configuration['account_key'];
         $bucketId = $configuration['bucket_id'];
 
-        $client = new B2Client($accountId, $accountKey, $configuration['timeout']);
-        $data = $client->b2AuthorizeAccount();
-        $this->assertTrue(array_key_exists('apiUrl', $data));
-        $this->assertTrue(array_key_exists('authorizationToken', $data));
-        $this->assertTrue(array_key_exists('downloadUrl', $data));
-        $this->assertTrue(array_key_exists('accountId', $data));
-        $this->assertTrue($data['accountId'] == $accountId);
+        $client = new B2API($accountId, $accountKey, $configuration['timeout']);
+        $response = $client->b2AuthorizeAccount();
+        $this->assertTrue($response->isOk());
+        $this->assertFalse(is_null($response->get('apiUrl')));
+        $this->assertFalse(is_null($response->get('authorizationToken')));
+        $this->assertFalse(is_null($response->get('downloadUrl')));
+        $this->assertFalse(is_null($response->get('accountId')));
+        $this->assertTrue($response->get('accountId') == $accountId);
 
-        $uploadData = $client->b2GetUploadURL($data['apiUrl'], $data['authorizationToken'], $bucketId);
-        $this->assertTrue(array_key_exists('bucketId', $uploadData));
-        $this->assertTrue(array_key_exists('uploadUrl', $uploadData));
-        $this->assertTrue(array_key_exists('authorizationToken', $uploadData));
-        $this->assertTrue($uploadData['bucketId'] == $bucketId);
+        $response2 = $client->b2GetUploadURL($response->get('apiUrl'), $response->get('authorizationToken'), $bucketId);
+        $this->assertTrue($response2->isOk());
+        $this->assertFalse(is_null($response2->get('bucketId')));
+        $this->assertFalse(is_null($response2->get('uploadUrl')));
+        $this->assertFalse(is_null($response2->get('authorizationToken')));
+        $this->assertTrue($response2->get('bucketId') == $bucketId);
 
         $fileName = 'apple.jpg';
         $file = __DIR__.'/'.$fileName;
-        $fileUploaded = $client->b2UploadFile(
+        $response3 = $client->b2UploadFile(
             $file,
-            $uploadData['uploadUrl'],
-            $uploadData['authorizationToken'],
+            $response2->get('uploadUrl'),
+            $response2->get('authorizationToken'),
             $fileName
         );
-        $this->assertFalse(array_key_exists('code', $fileUploaded));
-        $this->assertTrue(array_key_exists('accountId', $fileUploaded));
-        $this->assertTrue(array_key_exists('bucketId', $fileUploaded));
-        $this->assertTrue(array_key_exists('contentLength', $fileUploaded));
-        $this->assertTrue(array_key_exists('contentSha1', $fileUploaded));
-        $this->assertTrue(array_key_exists('contentType', $fileUploaded));
-        $this->assertTrue(array_key_exists('fileId', $fileUploaded));
-        $this->assertTrue(array_key_exists('fileInfo', $fileUploaded));
-        $this->assertTrue(array_key_exists('fileName', $fileUploaded));
-        $this->assertTrue($fileUploaded['fileName'] == $fileName);
-        $this->assertTrue($fileUploaded['bucketId'] == $bucketId);
-        $this->assertTrue($fileUploaded['accountId'] == $accountId);
+        $this->assertTrue($response3->isOk());
+        $this->assertFalse(is_null($response3->get('accountId')));
+        $this->assertFalse(is_null($response3->get('bucketId')));
+        $this->assertFalse(is_null($response3->get('contentLength')));
+        $this->assertFalse(is_null($response3->get('contentSha1')));
+        $this->assertFalse(is_null($response3->get('contentType')));
+        $this->assertFalse(is_null($response3->get('fileId')));
+        $this->assertFalse(is_null($response3->get('fileInfo')));
+        $this->assertFalse(is_null($response3->get('fileName')));
+        $this->assertTrue($response3->get('fileName') == $fileName);
+        $this->assertTrue($response3->get('bucketId') == $bucketId);
+        $this->assertTrue($response3->get('accountId') == $accountId);
     }
 }

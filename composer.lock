@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1717f257f2a4cc8d4ff5bed62ea7b279",
-    "content-hash": "bdb2c535093fef7390ce844ea37f3c7b",
+    "hash": "525e047bd8aad9d983cf946052089e47",
+    "content-hash": "c3d6ba36834bd4502c5f5f3e5d7502a6",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -205,16 +205,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kamilZ/B2Backblaze.git",
-                "reference": "b3962ddb156080712a99c8a4dc62420f77a4a76f"
+                "reference": "3913f87d145cb05f3a9342458e12506cf961656e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kamilZ/B2Backblaze/zipball/b3962ddb156080712a99c8a4dc62420f77a4a76f",
-                "reference": "b3962ddb156080712a99c8a4dc62420f77a4a76f",
+                "url": "https://api.github.com/repos/kamilZ/B2Backblaze/zipball/3913f87d145cb05f3a9342458e12506cf961656e",
+                "reference": "3913f87d145cb05f3a9342458e12506cf961656e",
                 "shasum": ""
             },
             "require": {
-                "kriswallsmith/buzz": ">= 0.6",
+                "kriswallsmith/buzz": ">= 0.15",
                 "php": ">=5.3.2"
             },
             "require-dev": {
@@ -259,7 +259,7 @@
                 "php",
                 "storage"
             ],
-            "time": "2015-11-13 01:55:28"
+            "time": "2015-11-14 13:26:49"
         },
         {
             "name": "kriswallsmith/buzz",

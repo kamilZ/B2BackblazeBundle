@@ -1,7 +1,7 @@
 services:
     backblaze.b2:
-        class: KamilZ\B2BackblazeBundle\Services\B2Client
-        arguments: [%b2_backblaze%]
+        class: KamilZ\B2BackblazeBundle\Services\B2Service
+        arguments: ["%b2_backblaze%"]
 
     backblaze.twig:
         class: KamilZ\B2BackblazeBundle\Twig\Extension\B2HelperExtension
