@@ -42,7 +42,7 @@ curl -sS https://getcomposer.org/installer | php
         account_id: YOUR_ID
         account_key: YOUR_ACCCOUNT_SECRET_KEY
         bucket_id: YOUR_BUCKET_ID
-        bucket_region: 'https://fxxx.backblaze.com/file/'
+        bucket_region: 'https://fxxx.backblaze.com/file/YOUR_BUCKET_NAME/'
         timeout: 2000
 
 # Usage
@@ -54,8 +54,8 @@ Upload File:
         $b2 = $this->get("backblaze.b2");
 
         $b2->uploadFile("...test.png","test.png");
-        or
-        $b2->uploadFile($file,"test.png");
+        //or
+        $b2->uploadFileByContent($file,"test.png");
         (...)
 
 
