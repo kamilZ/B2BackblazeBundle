@@ -53,6 +53,27 @@ class B2Service
         }
         return true;
     }
+
+    /**
+     * Upload file by file path.
+     *
+     * @param String $path
+     * @param String $filename
+     *
+     * @return bool
+     * @throws \B2Backblaze\B2Exception
+     */
+    public function uploadLargeFile($path, $filename)
+    {
+        try{
+            $data =  $this->b2->insertLarge($this->bucket,$path,$filename);
+            if(!is_array($data)) return false;
+        }catch (\B2Backblaze\B2Exception $e){
+            return false;
+        }
+        return true;
+    }
+
     /**
      * Upload file by file content.
      *
